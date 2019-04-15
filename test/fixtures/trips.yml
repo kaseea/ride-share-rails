@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-04-15 16:17:23
+  rating: 1
+  cost: 1
+
+two:
+  date: 2019-04-15 16:17:23
+  rating: 1
+  cost: 1
