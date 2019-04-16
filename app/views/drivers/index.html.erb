@@ -1,2 +1,13 @@
 <h1>Drivers#index</h1>
 <p>Find me in app/views/drivers/index.html.erb</p>
+
+<table>
+    <% @drivers.each do |driver| %>
+        <tr>
+            <td><%= link_to driver.name, driver_path(driver.id) %></td>
+            <td>average rating: <%= driver.average_rating %></td>
+            <td><%= button_to "Edit", edit_driver_path(driver.id), method: :get %></td>
+            <td><%= button_to "Delete", driver_path(driver.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %></td>
+        </tr>
+    <% end %>
+</table>

@@ -1,2 +1,35 @@
 <h1>Drivers#show</h1>
 <p>Find me in app/views/drivers/show.html.erb</p>
+
+<h1><%= @driver.name %></h1>
+<h2>vin: <%= @driver.vin %></h2>
+<p>average rating: <%= @driver.average_rating %></p>
+<p>total earnings: $<%= @driver.total_cost %></p>
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>date</th>
+        <th>driver</th>
+        <th>passenger</th>
+        <th>price</th>
+        <th>rating</th>
+        <th>delete</th>
+        <th>edit</th>
+    </tr>
+    <% @driver.trips.each do |trip| %>
+    <tr>
+        <td><%= link_to trip.id, trip_path(trip.id) %></td>
+        <td><%= trip.date.strftime("%F") %></td>
+        <td><%= link_to trip.driver.name, driver_path(trip.driver.id) %></td>
+        <td><%= link_to trip.passenger.name, passenger_path(trip.passenger.id) %></td>
+        <td><%= trip.cost/100.0 %></td>
+        <td><%= trip.rating %></td>
+        <td><%= button_to "Delete", trip_path(trip.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %></td>
+        <td><%= button_to "Edit", edit_trip_path(trip.id), method: :get %></td>
+    </tr>
+    <% end %>
+</table>
+
+
+
