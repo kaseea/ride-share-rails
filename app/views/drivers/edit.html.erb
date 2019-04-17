@@ -1,2 +1,10 @@
 <h1>Drivers#edit</h1>
 <p>Find me in app/views/drivers/edit.html.erb</p>
+
+<h2>Form for editing an existing driver</h2>
+
+<%= render partial: "form", locals: {
+  form_class: "edit-driver",
+  intro_text: "Use this form to edit an existing driver",
+  action_name: "Edit Driver",
+} %>

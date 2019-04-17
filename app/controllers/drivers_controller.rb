@@ -23,7 +23,7 @@ class DriversController < ApplicationController
     if is_successful
       redirect_to driver_path(driver.id)
     else
-      head :not_found
+      render :new, status: :bad_request
     end
   end
 
@@ -46,6 +46,9 @@ class DriversController < ApplicationController
 
     if is_successful
       redirect_to driver_path(driver.id)
+    else
+      @driver = driver
+      render :edit, status: :bad_request
     end
   end
 
