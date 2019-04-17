@@ -10,28 +10,6 @@
 <h2>phone number: <%= @passenger.phone_num %></h2>
 <h2>total charged: <%= number_to_currency(@passenger.total_charged, :unit => "$") %></h2>
 
-<table>
-    <tr>
-        <th>id</th>
-        <th>date</th>
-        <th>driver</th>
-        <th>passenger</th>
-        <th>price</th>
-        <th>rating</th>
-        <th>edit</th>
-        <th>delete</th>
-    </tr>
-    <% @passenger.trips.each do |trip| %>
-    <tr>
-        <td><%= link_to trip.id, trip_path(trip.id) %></td>
-        <td><%= trip.date.strftime("%F") %></td>
-        <td><%= link_to trip.driver.name, driver_path(trip.driver.id) %></td>
-        <td><%= link_to trip.passenger.name, passenger_path(trip.passenger.id) %></td>
-        <td><%= trip.cost/100.0 %></td>
-        <td><%= trip.rating %></td>
-        <td><%= button_to "Edit", edit_trip_path(trip.id), method: :get %></td>
-        <td><%= button_to "Delete", trip_path(trip.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %></td>
-    </tr>
-    <% end %>
-</table>
-
+<%= render partial: "trips-table", locals: {
+  user: @passenger,
+} %>
