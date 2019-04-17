@@ -2,6 +2,9 @@
 <p>Find me in app/views/passengers/show.html.erb</p>
 
 <h1><%= @passenger.name %></h1>
+<%= button_to "Edit Passenger", edit_passenger_path(@passenger.id), method: :get %>
+<%= button_to "Delete Passenger", passenger_path(@passenger.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %>
+
 <h2>phone number: <%= @passenger.phone_num %></h2>
 
 <table>
@@ -12,8 +15,8 @@
         <th>passenger</th>
         <th>price</th>
         <th>rating</th>
-        <th>delete</th>
         <th>edit</th>
+        <th>delete</th>
     </tr>
     <% @passenger.trips.each do |trip| %>
     <tr>
@@ -23,8 +26,8 @@
         <td><%= link_to trip.passenger.name, passenger_path(trip.passenger.id) %></td>
         <td><%= trip.cost/100.0 %></td>
         <td><%= trip.rating %></td>
-        <td><%= button_to "Delete", trip_path(trip.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %></td>
         <td><%= button_to "Edit", edit_trip_path(trip.id), method: :get %></td>
+        <td><%= button_to "Delete", trip_path(trip.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %></td>
     </tr>
     <% end %>
 </table>
