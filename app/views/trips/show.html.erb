@@ -1,2 +1,14 @@
 <h1>Trips#show</h1>
 <p>Find me in app/views/trips/show.html.erb</p>
+
+<p>driver:<%= link_to @trip.driver.name, driver_path(@trip.driver.id) %></p>
+
+<p>passenger:<%= link_to @trip.passenger.name, passenger_path(@trip.passenger.id) %></p>
+
+<p>rating:<%= @trip.rating %></p>
+
+<p>cost:<%= number_to_currency(@trip.cost/100.0, :unit => "$")  %></p>
+
+<%= button_to "Edit", edit_trip_path(@trip.id), method: :get %>
+
+<%= button_to "Delete", trip_path(@trip.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %>
