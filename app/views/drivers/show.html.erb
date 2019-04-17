@@ -7,9 +7,7 @@
 
 <h2>vin: <%= @driver.vin %></h2>
 <p>average rating: <%= @driver.average_rating %></p>
-<p>total earnings: $<%= @driver.total_cost %></p>
-
-
+<p>total earnings: <%= number_to_currency(@driver.total_cost, :unit => "$") %></p>
 
 <table>
     <tr>

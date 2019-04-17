@@ -13,11 +13,11 @@ class Driver < ApplicationRecord
   end
 
   def total_cost
-    return "no trips" if trips.length == 0
+    return 0 if trips.length == 0
     sum = 0
     trips.each do |trip|
       sum += (trip.cost - 165) * 0.8
     end
-    return (sum / 100.0).round(2)
+    return sum / 100.0
   end
 end
