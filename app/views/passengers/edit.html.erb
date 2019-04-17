@@ -1,2 +1,10 @@
 <h1>Passengers#edit</h1>
 <p>Find me in app/views/passengers/edit.html.erb</p>
+
+<h2>Form for editing an existing passenger</h2>
+
+ <%= render partial: "form", locals: {
+  form_class: "edit-passenger",
+  intro_text: "Use this form to edit an existing passenger",
+  action_name: "Edit Passenger",
+} %>

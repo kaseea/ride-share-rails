@@ -1,2 +1,10 @@
 <h1>Passengers#new</h1>
 <p>Find me in app/views/passengers/new.html.erb</p>
+
+<h2>Form for creating new driver</h2>
+
+ <%= render partial: "form", locals: {
+  form_class: "new-passenger",
+  intro_text: "Use this form to create a new passenger",
+  action_name: "Create Passenger",
+} %>
