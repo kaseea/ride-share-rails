@@ -10,13 +10,18 @@ class TripsController < ApplicationController
   def create
     trip = Trip.new
     trip.date = DateTime.now
-    trip.rating = 0
+    trip.rating = nil
     trip.cost = 0
     trip.driver_id = Driver.all.sample.id
     trip.passenger_id = params[:passenger_id]
-    trip.save
+    is_successful = trip.save
     # please explain to me why trip path needs the id: trip.id and not just trip.id
-    redirect_to passenger_trip_path(id: trip.id)
+    if is_successful
+      redirect_to passenger_trip_path(id: trip.id)
+    else
+      #record not saved? we should look into this
+      head :unprocessable_entity
+    end
   end
 
   def edit
