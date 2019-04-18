@@ -42,7 +42,7 @@ class TripsController < ApplicationController
     end
 
     if is_successful
-      redirect_to passenger_trip_path(trip.id)
+      redirect_to passenger_trip_path(passenger_id: params[:passenger_id], id: params[:id])
     else
       @trip = trip
       render :edit, status: :bad_request
