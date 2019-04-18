@@ -5,7 +5,21 @@
 
 <p>passenger:<%= link_to @trip.passenger.name, passenger_path(@trip.passenger.id) %></p>
 
-<p>rating:<%= @trip.rating %></p>
+<% if @trip.rating %>
+  <p>rating:<%= @trip.rating %></p>
+<% else %>
+  
+  <%= form_with model: @trip, class: "edit_rating_form", url: passenger_trip_path do |f| %>
+
+  <p><%= "Form for editing a trip" %></p>
+
+  <%= f.label :rating %>
+  <%= f.select :rating, [1, 2, 3, 4, 5]%>
+  
+  <%= f.submit "add rating", class: "trip-form__submit-btn" %>
+
+  <% end %>
+<% end %>
 
 <p>cost:<%= number_to_currency(@trip.cost/100.0, :unit => "$")  %></p>
 
