@@ -7,6 +7,12 @@ class TripsController < ApplicationController
     end
   end
 
+  def new
+  end
+
+  def create
+  end
+
   def edit
     @trip = Trip.find_by(id: params[:id])
 
@@ -30,9 +36,6 @@ class TripsController < ApplicationController
       @trip = trip
       render :edit, status: :bad_request
     end
-  end
-
-  def create
   end
 
   def destroy
