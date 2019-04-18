@@ -16,15 +16,17 @@
     </tr>
     <% user.trips.each do |trip| %>
     <tr>
-        <td><%= link_to trip.id, trip_path(trip.id) %></td>
+        <td><%= link_to trip.id, driver_trip_path(trip.id) %></td>
         <td><%= trip.date.strftime("%F") %></td>
         <td><%= link_to trip.driver.name, driver_path(trip.driver.id) %></td>
         <td><%= link_to trip.passenger.name, passenger_path(trip.passenger.id) %></td>
         <td><%= trip.cost/100.0 %></td>
         <td><%= trip.rating %></td>
-        <td><%= button_to "Edit", edit_trip_path(trip.id), method: :get %></td>
-        <td><%= button_to "Delete", trip_path(trip.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %></td>
+        <td><%= button_to "Edit", edit_driver_trip_path(trip.id), method: :get %></td>
+        <td><%= button_to "Delete", driver_trip_path(trip.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %></td>
     </tr>
     <% end %>
 </table>
 <% end %>
+
+<!-- Playing around with paths... not the same as the passenger trip table anymore. -->

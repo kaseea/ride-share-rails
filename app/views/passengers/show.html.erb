@@ -4,7 +4,7 @@
 <h1><%= @passenger.name %></h1>
 <%= button_to "Edit Passenger", edit_passenger_path(@passenger.id), method: :get %>
 <%= button_to "Delete Passenger", passenger_path(@passenger.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %>
-<%= button_to "New Trip (this button won't work until we fill out the trips controller)", new_trip_path, method: :get %>
+<%= button_to "New Trip (this button won't work until we fill out the trips controller)", new_passenger_trip_path, method: :get %>
 
 
 <h2>phone number: <%= @passenger.phone_num %></h2>
