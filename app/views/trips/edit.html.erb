@@ -1,2 +1,32 @@
 <h1>Trips#edit</h1>
 <p>Find me in app/views/trips/edit.html.erb</p>
+
+<% if @trip.errors.any? %>
+  <ul class="errors">
+    <% @trip.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @trip, class: "edit_trip_form", url: passenger_trip_path do |f| %>
+
+  <p><%= "Form for editing a trip" %></p>
+
+  <%= f.label :date %>
+  <%= f.datetime_field :date %>
+
+  <%= f.label :rating %>
+  <%= f.select :rating, [1, 2, 3, 4, 5]%>
+  
+  <%= f.label :cost %>
+  <%= f.text_field :cost %>
+
+  <%= f.label :driver %>
+  <%= f.select :driver_id, Driver.all.map {|driver| [driver.name, driver.id] } %>
+
+  <%= f.submit "edit trip", class: "trip-form__submit-btn" %>
+
+<% end %>

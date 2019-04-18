@@ -1,0 +1,18 @@
+<h2>Form for creating a new Trip</h2>
+
+<% if @trip.errors.any? %>
+  <ul class="errors">
+    <% @trip.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @trip, url: passenger_trips_path, class: "new_trip" do |f| %>
+
+
+<%= f.submit "MAKE TRIP", class: "trip-form__submit-btn" %>
+
+<% end %>
