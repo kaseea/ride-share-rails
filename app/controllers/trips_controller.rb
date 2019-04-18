@@ -8,6 +8,8 @@ class TripsController < ApplicationController
   end
 
   def new
+    passenger = Passenger.find_by(id: params[:passenger_id])
+    @trip = Trip.new(id: params[:id], date: DateTime.now, rating: null, cost: null)
   end
 
   def create

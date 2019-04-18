@@ -10,6 +10,6 @@
 <p>cost:<%= number_to_currency(@trip.cost/100.0, :unit => "$")  %></p>
 
 <!-- How do you edit these?? driver pass edit path? Maybe edit should be a general path instead -->
-<%= button_to "Edit", edit_trip_path(@trip.id), method: :get %>
+<%= button_to "Edit", edit_passenger_trip_path(@trip.id), method: :get %>
 
-<%= button_to "Delete", trip_path(@trip.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %>
+<%= button_to "Delete", passenger_trip_path(@trip.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %>
