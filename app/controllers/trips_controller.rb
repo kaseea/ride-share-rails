@@ -7,12 +7,16 @@ class TripsController < ApplicationController
     end
   end
 
-  def new
-    passenger = Passenger.find_by(id: params[:passenger_id])
-    @trip = Trip.new(id: params[:id], date: DateTime.now, rating: null, cost: null)
-  end
-
   def create
+    trip = Trip.new
+    trip.date = DateTime.now
+    trip.rating = 0
+    trip.cost = 0
+    trip.driver_id = Driver.all.sample.id
+    trip.passenger_id = params[:passenger_id]
+    trip.save
+    # please explain to me why trip path needs the id: trip.id and not just trip.id
+    redirect_to passenger_trip_path(id: trip.id)
   end
 
   def edit
@@ -33,7 +37,7 @@ class TripsController < ApplicationController
     end
 
     if is_successful
-      redirect_to trip_path(trip.id)
+      redirect_to passenger_trip_path(trip.id)
     else
       @trip = trip
       render :edit, status: :bad_request
