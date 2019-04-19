@@ -31,10 +31,6 @@ describe DriversController do
     end
   end
 
-  describe "new" do
-    # Your tests go here
-  end
-
   describe "create" do
     it "will save a new driver and redirect if given valid inputs" do
       input_name = "FirstName LastName"
@@ -75,10 +71,6 @@ describe DriversController do
 
       must_respond_with :bad_request
     end
-  end
-
-  describe "edit" do
-    # Your tests go here
   end
 
   describe "update" do
@@ -152,10 +144,10 @@ describe DriversController do
     end
 
     it "404 if no driver found" do
-      invalid_task_id = -1
+      invalid_passenger_id = -1
 
       expect {
-        delete driver_path(invalid_task_id)
+        delete driver_path(invalid_passenger_id)
       }.wont_change "Driver.count"
 
       must_respond_with :not_found

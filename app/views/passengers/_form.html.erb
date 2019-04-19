@@ -1,5 +1,5 @@
 
-<% if @passenger.errors.any? %>
+<% if @passenger && @passenger.errors.any? %>
   <ul class="errors">
     <% @passenger.errors.each do |column, message| %>
       <li>
