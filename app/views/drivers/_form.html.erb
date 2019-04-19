@@ -1,4 +1,4 @@
-<% if @driver.errors.any? %>
+<% if @driver && @driver.errors.any? %>
   <ul class="errors">
     <% @driver.errors.each do |column, message| %>
       <li>
