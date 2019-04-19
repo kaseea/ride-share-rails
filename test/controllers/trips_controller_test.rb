@@ -61,7 +61,7 @@ describe TripsController do
       must_respond_with :redirect
       expect(Trip.find_by(cost: 69).cost).must_equal 69
     end
-    # Your tests go here
+
     it "should respond with a bad request if the driver id empty" do
       driver = Driver.create(name: "Bernardo Prosacco", vin: "WBWSS52P9NEYLVDE9")
       passenger = Passenger.create(name: "Nina Hintz Sr.", phone_num: "560.815.3059")
@@ -134,11 +134,13 @@ describe TripsController do
       }.must_change "Trip.count", -1
 
       must_respond_with :redirect
-      must_redirect_to root_path
+      must_redirect_to passenger_path(passenger.id)
     end
 
     it "can give a 404 if trip to be deleted isn't found" do
       passenger = Passenger.create(name: "Nina Hintz Sr.", phone_num: "560.815.3059")
+
+      expect(passenger).must_be_kind_of Passenger
 
       delete passenger_trip_path(passenger_id: passenger.id, id: -1)
 
