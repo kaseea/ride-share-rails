@@ -52,11 +52,14 @@ class TripsController < ApplicationController
   def destroy
     trip = Trip.find_by(id: params[:id])
 
+    passenger_id = trip.passenger.id
+    driver_id = trip.driver.id
+
     if trip.nil?
       head :not_found
     else
       trip.destroy
-      redirect_to root_path
+      redirect_to passenger_path(passenger_id) # or to driver_path(driver_id) if from driver page????
     end
   end
 
