@@ -143,6 +143,20 @@ describe DriversController do
       must_redirect_to drivers_path
     end
 
+    it "deletes trips associated with driver (but not passenger)" do
+      driver = Driver.create(name: "To Delete", vin: "12345")
+      passenger = Passenger.create(name: "Passenger", phone_num: "12345566")
+      trip = Trip.create(driver: driver, passenger: passenger, date: DateTime.now, cost: 123, rating: 4)
+
+      num_of_passengers = Passenger.all.length
+
+      expect {
+        delete driver_path(driver.id)
+      }.must_change "Trip.count", -1
+
+      expect(Passenger.all.length).must_equal num_of_passengers
+    end
+
     it "404 if no driver found" do
       invalid_passenger_id = -1
 
