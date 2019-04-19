@@ -1,15 +1,13 @@
-<h1>Passengers#show</h1>
-<p>Find me in app/views/passengers/show.html.erb</p>
-
 <h1><%= @passenger.name %></h1>
-<%= button_to "Edit Passenger", edit_passenger_path(@passenger.id), method: :get %>
-<%= button_to "Delete Passenger", passenger_path(@passenger.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %>
-<%= button_to "New Trip", passenger_trips_path(passenger_id: params[:id]), method: :post %>
-
-
-<h2>phone number: <%= @passenger.phone_num %></h2>
-<h2>total charged: <%= number_to_currency(@passenger.total_charged, :unit => "$") %></h2>
-
+<section class="buttons">
+  <%= button_to "Edit Passenger", edit_passenger_path(@passenger.id), method: :get %>
+  <%= button_to "Delete Passenger", passenger_path(@passenger.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %>
+  <%= button_to "New Trip", passenger_trips_path(passenger_id: params[:id]), method: :post %>
+</section>
+<section class="description">
+  <h3>phone number: <%= @passenger.phone_num %></h3>
+  <h3>total charged: <%= number_to_currency(@passenger.total_charged, :unit => "$") %></h3>
+</section>
 <%= render partial: "trips-table", locals: {
   user: @passenger,
 } %>

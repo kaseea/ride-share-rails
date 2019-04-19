@@ -95,7 +95,6 @@ describe TripsController do
   end
 
   describe "create" do
-    # Your tests go here
     it "should create new trip" do
       driver = Driver.create(name: "Bernardo Prosacco", vin: "WBWSS52P9NEYLVDE9")
 
@@ -119,7 +118,6 @@ describe TripsController do
   end
 
   describe "destroy" do
-    # Your tests go here
     it "can delete a trip" do
       driver = Driver.create(name: "Bernardo Prosacco", vin: "WBWSS52P9NEYLVDE9")
       passenger = Passenger.create(name: "Nina Hintz Sr.", phone_num: "560.815.3059")

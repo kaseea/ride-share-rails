@@ -1,13 +1,14 @@
-<h1>Drivers#show</h1>
-<p>Find me in app/views/drivers/show.html.erb</p>
-
 <h1><%= @driver.name %></h1>
-<%= button_to "Edit Driver", edit_driver_path(@driver.id), method: :get %>
-<%= button_to "Delete Driver", driver_path(@driver.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %>
+<section class="buttons">
+  <%= button_to "Edit Driver", edit_driver_path(@driver.id), method: :get %>
+  <%= button_to "Delete Driver", driver_path(@driver.id), method: :delete, data: {confirm: "you sure you wanna delete?"} %>
+</section>
 
-<h2>vin: <%= @driver.vin %></h2>
-<p>average rating: <%= @driver.average_rating %></p>
-<p>total earnings: <%= number_to_currency(@driver.total_cost, :unit => "$") %></p>
+<section class="description">
+  <h3>vin: <%= @driver.vin %></h3>
+  <h3>average rating: <%= @driver.average_rating %></h3>
+  <h3>total earnings: <%= number_to_currency(@driver.total_cost, :unit => "$") %></h3>
+</section>
 
 <%= render partial: "trips-table", locals: {
   user: @driver,
